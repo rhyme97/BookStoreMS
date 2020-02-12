@@ -1,0 +1,48 @@
+
+body{
+	height: 100%;
+	width:100%;
+	background: url("../images/login.jpg") no-repeat center center fixed;
+	-webkit-background-size: cover;
+	background-size: cover;
+	position: relative;
+}
+.bg {
+	width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+	background: rgba(0,0,0,.3);
+}
+main {
+	width: 400px;
+	padding: 20px;
+	position: absolute;
+	top:150px;
+	left: 50%;
+	transform: translateX(-50%);
+	background: rgba(143,98,98,.5);
+}
+form>button[type=button] {
+	display: block;
+	text-align: center;
+	width: 200px;
+	margin: 0 auto;
+}
+form {
+	position: relative;
+}
+form>img {
+	width: 60px;
+	border-radius: 50%;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	top: -50px;
+	
+
+}
+.tips_user {
+	padding-left: 15px;
+	color: red;
+}

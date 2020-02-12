@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>销售管理</title>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/common.css">
+    <link rel="stylesheet" href="../font/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="../css/sell.css">
+  
+
+
+  </head>
+  <body>
+    <div class="container-fluid">
+    	<div class="row">
+		    <div class="col-lg-3 col-xs-3">
+		        <div class="dropdown dType">
+		            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+		                分类搜索
+		                <span class="caret"></span>
+		            </button>
+		            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+		                <li><a href="#">图书编号</a></li>
+		                <li><a href="#">书名</a></li>
+		                <li><a href="#">图书类别</a></li>
+		            </ul>
+		        </div>
+		    </div>
+	
+    		<div class="col-lg-6 col-xs-7">
+			    <div class="input-group">
+			    	<span class="input-group-addon typeItem">图书编号:</span>
+			        <input type="text" class="form-control searchContent" placeholder="Search for...">
+			        <span class="input-group-btn">
+			            <button class="btn btn-default search" type="button">Go!</button>
+			        </span>
+			    </div>
+    		</div>
+    		<div class="col-lg-3 col-xs-2">
+    			<button type="button" class="btn btn-primary reset">重置</button>
+    		</div>
+    	</div>	
+    	<hr>
+        
+
+    	<table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>编号</th>
+                    <th>名称</th>
+                    <th>类别</th>
+                    <th>售价</th>
+                    <th>库存</th>
+                    <th>已售</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="dataList">
+     
+            </tbody>
+    	</table>
+    	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    		<div class="modal-dialog" role="document">
+    			<div class="modal-content">
+    				<div class="modal-header">
+    					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="hideIt">&times;</span></button>
+    					<h4 class="modal-title">出售清单</h4>
+    				</div>
+    				<div class="modal-body">
+    					<div class="input-group">
+    						<span class="input-group-addon" id="sizing-addon2">图书编号:</span>
+    						<input type="text" class="form-control sellId"  aria-describedby="sizing-addon2" disabled="disabled">
+    					</div>
+    					<div class="input-group">
+    						<span class="input-group-addon" id="sizing-addon2">数量:</span>
+    						<input type="text" class="form-control  sellNum"
+    						placeholder="编辑数量..."  aria-describedby="sizing-addon2">
+    					</div>
+    					<div class="input-group">
+    						<span class="input-group-addon" id="sizing-addon2">售价:</span>
+    						<input type="text" class="form-control  sellPrice"  aria-describedby="sizing-addon2" disabled="disabled">
+    					</div>
+    					<div class="input-group">
+    						<span class="input-group-addon" id="sizing-addon2">总价:</span>
+    						<input type="text" class="form-control  sellAllPrice"  aria-describedby="sizing-addon2" disabled="disabled">
+    					</div>
+    				</div>
+    				<div class="modal-footer">
+    				
+    					<button type="button" class="btn btn-primary sellOk">确定出售</button>
+    				</div>
+    			</div><!-- /.modal-content -->
+    		</div><!-- /.modal-dialog -->
+    	</div>
+    
+               <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="hideIt">&times;</span></button>
+              <h4 class="modal-title">详情</h4>
+            </div>
+ 	 <div class="modal-body">
+            	<div class="input-group input-group-sm">
+            		<span class="input-group-addon" id="sizing-addon3">商品编号</span>
+            		<input type="text" class="form-control" aria-describedby="sizing-addon3" disabled="disabled"  value="123">
+            	</div>
+            	<div class="input-group input-group-sm">
+            		<span class="input-group-addon" id="sizing-addon3">商品名称</span>
+            		<input type="text" class="form-control"aria-describedby="sizing-addon3" disabled="disabled">
+            	</div>
+            	<div class="input-group input-group-sm">
+            		<span class="input-group-addon" id="sizing-addon3">类别</span>
+            		<input type="text" class="form-control" aria-describedby="sizing-addon3" disabled="disabled">
+            	</div>
+            	<div class="input-group input-group-sm">
+            		<span class="input-group-addon" id="sizing-addon3">售价</span>
+            		<input type="text" class="form-control" aria-describedby="sizing-addon3" disabled="disabled">
+            	</div>
+            	<div class="input-group input-group-sm">
+            		<span class="input-group-addon" id="sizing-addon3">借阅价/天</span>
+            		<input type="text" class="form-control" aria-describedby="sizing-addon3" disabled="disabled">
+            	</div>
+            	<div class="input-group input-group-sm">
+            		<span class="input-group-addon" id="sizing-addon3">已借天数</span>
+            		<input type="text" class="form-control" aria-describedby="sizing-addon3" disabled="disabled">
+            	</div>
+            	<div class="input-group input-group-sm">
+            		<span class="input-group-addon" id="sizing-addon3">库存</span>
+            		<input type="text" class="form-control" aria-describedby="sizing-addon3" disabled="disabled">
+            	</div>
+            	<div class="input-group input-group-sm">
+            		<span class="input-group-addon" id="sizing-addon3">已售</span>
+            		<input type="text" class="form-control" aria-describedby="sizing-addon3" disabled="disabled">
+            	</div>
+         </div>
+            </div>
+            <div class="modal-footer">
+            
+               <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+          </div><!-- /.modal-content -->
+      </div>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
+      <script type="text/javascript" src="../js/template-web.js"></script>
+      <script type="text/javascript" src="../js/sell.js"></script>
+        <script type="text/template" id="indexTpl">
+    	{{each list}}
+    	<tr>
+    		<td>{{$value.goodsId}}</td>
+    		<td>{{$value.goodsName}}</td>
+    		<td>{{$value.goodsType}}</td>
+    		<td>{{$value.goodsPrice}}</td>
+    		<td>{{$value.goodsCount}}</td><td>{{$value.goodsSell}}</td>
+    		<td>
+    			<button type="button" class="btn btn-info detailbook" data-toggle="modal" data-target="#myModal1">详情</button>
+    			<button type="button" class="btn btn-success sellIt" data-toggle="modal" data-target="#myModal">出售</button>
+    		</td>
+    	</tr>
+    	{{/each}}
+    </script>
+  </body>
+</html>

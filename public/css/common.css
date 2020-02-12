@@ -1,0 +1,33 @@
+/*样式初始化，定义公共的公共的样式*/
+* {
+	margin: 0px;
+	padding:0px;
+}
+.clear::before,
+.clear::after {
+	content:"";
+	display: block;
+}
+.clear::before {
+	clear:both;
+}
+.clear {
+	*zoom:1;
+}
+li {
+	list-style: none;
+}
+a {
+	text-decoration: none;
+}
+/*样式格式化（标题，字号大小）*/
+.alert {
+	position: absolute;
+	top: 30%;
+	left: 50%;
+	transform: translate(-30%,-50%);
+	white-space: nowrap;
+	z-index: 9999;
+	background-color: #D11E1E;
+	color: white;
+}

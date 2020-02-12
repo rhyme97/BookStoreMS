@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>借阅管理</title>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+     <link rel="stylesheet" type="text/css" href="../css/common.css">
+      <link rel="stylesheet" href="../font/iconfont.css">
+      <link rel="stylesheet" type="text/css" href="../css/borrow.css">
+
+
+  </head>
+  <body>
+     <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+          <button type="button" class="btn btn-primary borrow" data-toggle="modal" data-target="#myModal">借阅</button>
+        </div>
+      </div>
+      <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>书名</th>
+                    <th>借阅人</th>
+                    <th>借阅时间</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="dataList">
+     
+            </tbody>
+      </table>
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="hideIt">&times;</span></button>
+              <h4 class="modal-title">新增借阅</h4>
+            </div>
+            <div class="modal-body">
+              <div class="input-group">
+                <span class="input-group-addon" id="sizing-addon2">书名:</span>
+                <input type="text" class="form-control borrowId" placeholder="book"  aria-describedby="sizing-addon2">
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon" id="sizing-addon2">借阅人:</span>
+                <input type="text" class="form-control  bPeople"
+                placeholder="people"  aria-describedby="sizing-addon2">
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon" id="sizing-addon2">时间:</span>
+                <input type="text" class="form-control bTime"  aria-describedby="sizing-addon2" disabled="disabled">
+              </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+            
+              <button type="button" class="btn btn-primary borrowOk">确定出售</button>
+            </div>
+          </div><!-- /.modal-content -->
+      </div>
+      <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="hideIt">&times;</span></button>
+              <h4 class="modal-title">Tips！！！</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                  确定图书返还并完成借阅？
+                </p>
+              </div>
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+              <button type="button" class="btn btn-primary borrowDelete">确定</button>
+            </div>
+          </div><!-- /.modal-content -->
+      </div>
+     </div>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
+       <script type="text/javascript" src="../js/template-web.js"></script>
+      <script type="text/javascript" src="../js/borrow.js"></script>
+      <script type="text/template" id="indexTpl">
+      {{each list}}
+      <tr>
+        <td>{{$value.bGoods}}</td>
+        <td>{{$value.bPeople}}</td>
+        <td>{{$value.bTime}}</td>
+        <td>
+          <button type="button" class="btn btn-success borrowBack" data-toggle="modal" data-target="#myModal1">完成借阅</button>
+        </td>
+      </tr>
+      {{/each}}
+    </script>
+  </body>
+</html>
